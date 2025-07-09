@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-import 'flutter_huaweiad_callback.dart';
-import 'flutter_huaweiad_code.dart.dart';
+import 'flutter_vivo_callback.dart';
+import 'flutter_vivoad_code.dart.dart';
 
 /// @Author: gstory
 /// @CreateDate: 2021/8/9 9:30 下午

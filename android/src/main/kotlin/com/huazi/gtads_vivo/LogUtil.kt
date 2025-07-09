@@ -1,4 +1,4 @@
-package com.huazi.gtads_huawei
+package com.huazi.gtads_vivo
 
 import android.text.TextUtils
 import android.util.Log
@@ -140,4 +140,3 @@ object LogUtil {
         }
     }
 }
-

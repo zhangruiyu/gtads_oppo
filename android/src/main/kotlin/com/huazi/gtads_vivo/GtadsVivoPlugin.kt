@@ -1,21 +1,20 @@
-package com.huazi.gtads_huawei
+package com.huazi.gtads_vivo
 
 import android.app.Activity
 import android.content.Context
-import com.huawei.hms.ads.HwAds
-import com.huazi.gtads_huawei.interstitialad.InterstitialAd
-import com.huazi.gtads_huawei.rewardvideoad.RewardVideoAd
+import com.vivo.mobilead.unified.base.VivoAdConfig
+import com.huazi.gtads_vivo.interstitialad.InterstitialAd
+import com.huazi.gtads_vivo.rewardvideoad.RewardVideoAd
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 
 
-/** GtadsHuaweiPlugin */
-class GtadsHuaweiPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
+/** GtadsVivoPlugin */
+class GtadsVivoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private var applicationContext: Context? = null
     private var mActivity: Activity? = null
 
@@ -27,7 +26,7 @@ class GtadsHuaweiPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         this.applicationContext = flutterPluginBinding.applicationContext
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "gtads_huawei")
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "gtads_vivo")
         channel.setMethodCallHandler(this)
         FlutterHuaweiAdEventPlugin().onAttachedToEngine(flutterPluginBinding)
     }
@@ -57,8 +56,9 @@ class GtadsHuaweiPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         when (call.method) {
             "init" -> {
                 val debug = call.argument<Boolean>("debug")
-                HwAds.init(applicationContext)
-                LogUtil.setAppName("flutter_huaweiad")
+                // Initialize Vivo SDK
+                VivoAdConfig.init(applicationContext!!)
+                LogUtil.setAppName("flutter_vivoad")
                 LogUtil.setShow(debug!!)
                 result.success(true)
             }

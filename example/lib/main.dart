@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gtads/gtads.dart';
 import 'dart:async';
 
-import 'package:gtads_huawei/gtads_huawei.dart';
+import 'package:gtads_vivo/gtads_vivo.dart';
 
 
 void main() {

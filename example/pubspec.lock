@@ -101,7 +101,7 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.5.0"
-  gtads_huawei:
+  gtads_vivo:
     dependency: "direct main"
     description:
       path: ".."

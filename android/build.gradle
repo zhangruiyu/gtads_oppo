@@ -1,4 +1,4 @@
-group 'com.huazi.gtads_huawei'
+group 'com.huazi.gtads_vivo'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -6,7 +6,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://developer.huawei.com/repo/' }
     }
 
     dependencies {
@@ -19,7 +18,9 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://developer.huawei.com/repo/' }
+        flatDir {
+            dirs project.file('libs'), project.rootProject.file('vivo_ad_network_sdk_6250/libs')
+        }
     }
 }
 
@@ -28,7 +29,7 @@ apply plugin: 'kotlin-android'
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace 'com.huazi.gtads_huawei'
+        namespace 'com.huazi.gtads_vivo'
     }
 
     compileSdkVersion 33
@@ -54,14 +55,8 @@ android {
     dependencies {
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
         testImplementation 'org.mockito:mockito-core:5.1.1'
-        implementation 'com.huawei.hms:ads-lite:13.4.65.300'
-        implementation 'com.huawei.hms:ads-consent:3.4.65.300'
-        implementation 'com.huawei.hms:ads-vast:3.4.44.303'
-        implementation 'com.huawei.hms:ads-vast-player:3.4.44.303'
-        implementation 'com.huawei.hms:ads-identifier:3.4.62.300'
-        implementation 'com.huawei.hms:ads-installreferrer:3.4.62.300'
-        implementation 'com.huawei.hms:stats:6.11.0.301'
-        implementation 'com.huawei.agconnect:agconnect-core:1.9.1.300'
+        implementation(name: 'open_ad_6.2.5.0_024d3e98a_3488g', ext: 'aar')
+        implementation(name: 'oaid_sdk_1.0.25', ext: 'aar')
     }
 
     testOptions {
