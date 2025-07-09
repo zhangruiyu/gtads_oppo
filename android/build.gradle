@@ -19,7 +19,7 @@ allprojects {
         google()
         mavenCentral()
         flatDir {
-            dirs project.file('libs'), project.rootProject.file('vivo_ad_network_sdk_6250/libs')
+            dirs "${project.rootDir}/libs"
         }
     }
 }
@@ -49,7 +49,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 20
     }
 
     dependencies {
@@ -57,6 +57,8 @@ android {
         testImplementation 'org.mockito:mockito-core:5.1.1'
         implementation(name: 'open_ad_6.2.5.0_024d3e98a_3488g', ext: 'aar')
         implementation(name: 'oaid_sdk_1.0.25', ext: 'aar')
+        implementation(name: 'GDTSDK.unionNoPlugin.4.580.1450', ext: 'aar')
+        implementation(name: 'open_ad_sdk_6.4.6.6', ext: 'aar')
     }
 
     testOptions {
@@ -68,6 +70,15 @@ android {
                outputs.upToDateWhen {false}
                showStandardStreams = true
             }
+        }
+    }
+}
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        flatDir {
+            dirs project(':gtads_vivo').file('libs')
         }
     }
 }

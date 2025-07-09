@@ -66,7 +66,7 @@ object RewardVideoAd {
                 "adType" to "rewardAd",
                 "onAdMethod" to "onFail",
                 "code" to error.code,
-                "message" to error.message
+                "message" to error.msg
             )
             FlutterHuaweiAdEventPlugin.sendContent(map)
         }

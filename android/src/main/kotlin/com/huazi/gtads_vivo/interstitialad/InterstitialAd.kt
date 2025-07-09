@@ -56,7 +56,7 @@ object InterstitialAd {
                 "adType" to "interactAd",
                 "onAdMethod" to "onFail",
                 "code" to error.code,
-                "message" to error.message
+                "message" to error.msg
             )
             FlutterHuaweiAdEventPlugin.sendContent(map)
             vivoInterstitialAd = null
