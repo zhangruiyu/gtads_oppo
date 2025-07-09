@@ -18,9 +18,9 @@
 ### pubspec.yaml
 ```dart
  //广告基础库 必须引入
- gtads: ^1.3.0
+ gtads: ^1.0.0
  //华为广告
- gtads_huawei: current version
+ gtads_huawei[](): current version
 ```
 
 ### 引入
