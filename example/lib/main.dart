@@ -33,7 +33,7 @@ class _IndexState extends State<Index> {
   }
 
   Future<void> init() async {
-    GTAds.addProvider(GTAdsHuaweiProvider("huawei"));
+    GTAds.addProvider(GTAdsVivoProvider("vivo",'959aaeba68264d51bb5e06dd4c080d7c'));
     initAd = await GTAds.init(isDebug: true);
     setState(() {});
   }
@@ -68,13 +68,13 @@ class _IndexState extends State<Index> {
                   textColor: Colors.white,
                   child: const Text('激励广告'),
                   onPressed: () async {
+                    print('激励广告');
                     var b = await GTAds.rewardAd(
                       codes: [
                         GTAdsCode(
-                          alias: "huawei",
+                          alias: "vivo",
                           probability: 5,
-                          androidId: "testx9dtjwj8hp",
-                          ohosId: "testx9dtjwj8hp",
+                          androidId: "a62bd1226c7749b196b6a3375edb19b8",
                         )
                       ],
                       //奖励名称
@@ -117,10 +117,9 @@ class _IndexState extends State<Index> {
                     var b = await GTAds.insertAd(
                         codes: [
                           GTAdsCode(
-                            alias: "huawei",
+                            alias: "vivo",
                             probability: 5,
-                            androidId: "testb4znbuh3n2",
-                            ohosId: 'testb4znbuh3n2'
+                            androidId: "3cc5030925194114a21156524812d7a9",
                           )
                         ],
                         isFull: false,

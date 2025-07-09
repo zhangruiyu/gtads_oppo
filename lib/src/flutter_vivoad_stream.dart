@@ -10,7 +10,7 @@ import 'flutter_vivoad_code.dart.dart';
 /// @Description: dart类作用描述
 
 const EventChannel HuaweiAdEventEvent =
-    EventChannel("com.huazi.gtads_huawei/adevent");
+    EventChannel("com.huazi.gtads_vivo/adevent");
 
 class FlutterHuaweiAdStream {
   ///

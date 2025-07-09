@@ -6,12 +6,12 @@ import 'package:gtads_vivo/src/gtads_vivo_plugin.dart';
 import 'flutter_vivo_callback.dart';
 import 'flutter_vivoad_stream.dart';
 
-class GTAdsHuaweiProvider extends GTAdsProvider {
-  GTAdsHuaweiProvider(String alias) : super(alias, '', '');
+class GTAdsVivoProvider extends GTAdsProvider {
+  GTAdsVivoProvider(String alias,String mediaId) : super(alias, mediaId, '');
 
   @override
   Future<bool> initAd(bool isDebug) async {
-    return MethodChannelGtadsHuawei.init(isDebug);
+    return MethodChannelGtadsHuawei.init(isDebug, androidId!);
   }
 
   @override
@@ -106,7 +106,6 @@ class GTAdsHuaweiProvider extends GTAdsProvider {
     MethodChannelGtadsHuawei.loadRewardVideoAd(
       //android广告id
       androidId: adCode.androidId ?? "",
-      ohosId: adCode.ohosId ?? "",
       //用户id
       userID: userId,
       //奖励

@@ -65,9 +65,10 @@ class GtadsVivoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         when (call.method) {
             "init" -> {
                 val debug = call.argument<Boolean>("debug")!!
+                val mediaId = call.argument<String>("mediaId")!!
                 val adConfig = VAdConfig.Builder()
                     .setMediaId(
-                        ""
+                        mediaId
                     )
                     .setDebug(debug).build()
                 VivoAdManager.getInstance().setAgreePrivacyStrategy(true)

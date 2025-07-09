@@ -4,14 +4,9 @@ import 'package:flutter/services.dart';
 class MethodChannelGtadsHuawei {
   static const methodChannel = MethodChannel('gtads_vivo');
 
-  static Future<bool> init(bool debug) async {
+  static Future<bool> init(bool debug, String mediaId) async {
     final result =
-        await methodChannel.invokeMethod<bool>('init', {'debug': debug});
-    return result!;
-  }
-
-  static Future<String?> getOAID() async {
-    final result = await methodChannel.invokeMethod<String>('getOAID');
+        await methodChannel.invokeMethod<bool>('init', {'debug': debug,'mediaId':mediaId});
     return result!;
   }
 
@@ -33,14 +28,12 @@ class MethodChannelGtadsHuawei {
 
   static Future<bool> loadRewardVideoAd({
     required String androidId,
-    required String ohosId,
     required String rewardName,
     required int rewardAmount,
     required String userID,
     String? customData,
   }) async {
     return await methodChannel.invokeMethod("loadRewardVideoAd", {
-      "ohosId": ohosId,
       "androidId": androidId,
       "rewardName": rewardName,
       "rewardAmount": rewardAmount,
