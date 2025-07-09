@@ -55,6 +55,10 @@ android {
     dependencies {
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
         testImplementation 'org.mockito:mockito-core:5.1.1'
+        implementation "com.android.support:support-annotations:28.0.0"
+        implementation "com.android.support:support-v4:28.0.0"
+        implementation "com.android.support:recyclerview-v7:28.0.0"
+        implementation "com.android.support:appcompat-v7:28.0.0"
         implementation(name: 'open_ad_6.2.5.0_024d3e98a_3488g', ext: 'aar')
         implementation(name: 'oaid_sdk_1.0.25', ext: 'aar')
         implementation(name: 'GDTSDK.unionNoPlugin.4.580.1450', ext: 'aar')

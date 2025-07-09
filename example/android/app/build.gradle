@@ -39,7 +39,11 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
-
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.huazi.gtads_huawei_example"
@@ -66,19 +70,5 @@ flutter {
 }
 
 dependencies {
-    implementation(name: 'open_ad_6.2.5.0_024d3e98a_3488g', ext: 'aar')
-    implementation(name: 'oaid_sdk_1.0.25', ext: 'aar')
-    implementation(name: 'GDTSDK.unionNoPlugin.4.580.1450', ext: 'aar')
-    implementation(name: 'open_ad_sdk_6.4.6.6', ext: 'aar')
-}
 
-
-rootProject.allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        flatDir {
-            dirs project(':gtads_vivo').file('libs')
-        }
-    }
 }

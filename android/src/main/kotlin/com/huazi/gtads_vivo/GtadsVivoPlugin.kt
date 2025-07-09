@@ -5,13 +5,9 @@ import android.app.Application
 import android.content.Context
 import com.huazi.gtads_vivo.interstitialad.InterstitialAd
 import com.huazi.gtads_vivo.rewardvideoad.RewardVideoAd
-import com.huazi.gtads_vivo.util.Constants
-import com.huazi.gtads_vivo.util.SettingSp
 import com.vivo.mobilead.manager.VInitCallback
 import com.vivo.mobilead.manager.VivoAdManager
 import com.vivo.mobilead.model.VAdConfig
-import com.vivo.mobilead.model.VCustomController
-import com.vivo.mobilead.model.VLocation
 import com.vivo.mobilead.unified.base.VivoAdError
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -71,10 +67,7 @@ class GtadsVivoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 val debug = call.argument<Boolean>("debug")!!
                 val adConfig = VAdConfig.Builder()
                     .setMediaId(
-                        SettingSp.getInstance().getStringValue(
-                            Constants.ConfigureKey.MEDIA_ID,
-                            Constants.DefaultConfigValue.MEDIA_ID
-                        )
+                        ""
                     )
                     .setDebug(debug).build()
                 VivoAdManager.getInstance().setAgreePrivacyStrategy(true)
@@ -87,7 +80,7 @@ class GtadsVivoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         result.success(true)
                     }
 
-                    override fun failed( adError: VivoAdError) {
+                    override fun failed(adError: VivoAdError) {
                         result.success(false)
                     }
                 })
