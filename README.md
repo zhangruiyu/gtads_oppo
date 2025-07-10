@@ -1,4 +1,4 @@
-# GTAds华为广告支持插件
+# GTAds华为vivo支持插件
 <p>
 <a href="https://pub.flutter-io.cn/packages/gtads_huawei"><img src=https://img.shields.io/pub/v/gtads_huawei?color=orange></a>
 <a href="https://pub.flutter-io.cn/packages/gtads_huawei"><img src=https://img.shields.io/pub/likes/gtads_huawei></a>
@@ -20,19 +20,20 @@
  //广告基础库 必须引入
  gtads: ^1.0.0
  //华为广告
- gtads_huawei[](): current version
+ gtads_vivo[](): current version
 ```
 
 ### 引入
 ```dart
-import 'package:gtads_huawei/gtads_huawei.dart';
+import 'package:gtads_vivo/gtads_vivo.dart';
 ```
 
 ### 使用
 仅需通过以下方法插入广告至聚合插件，无需关注具体广告的调用
+还要参考例子去配置libs里的那些aar
 ```dart
 //别名
-GTAds.addProvider(GTAdsHuaweiProvider("huawei"));
+GTAds.addProvider(GTAdsHuaweiProvider("vivo"));
 ```
 
 > 广告位使用参考[GTAds](https://github.com/gstory0404/GTAds/tree/master/gtads)
