@@ -1,8 +1,8 @@
 # GTAds华为vivo支持插件
 <p>
-<a href="https://pub.flutter-io.cn/packages/gtads_huawei"><img src=https://img.shields.io/pub/v/gtads_huawei?color=orange></a>
-<a href="https://pub.flutter-io.cn/packages/gtads_huawei"><img src=https://img.shields.io/pub/likes/gtads_huawei></a>
-<a href="https://pub.flutter-io.cn/packages/gtads_huawei"><img src=https://img.shields.io/pub/points/gtads_huawei></a>
+<a href="https://pub.flutter-io.cn/packages/gtads_vivo"><img src=https://img.shields.io/pub/v/gtads_vivo?color=orange></a>
+<a href="https://pub.flutter-io.cn/packages/gtads_vivo"><img src=https://img.shields.io/pub/likes/gtads_vivo></a>
+<a href="https://pub.flutter-io.cn/packages/gtads_vivo"><img src=https://img.shields.io/pub/points/gtads_vivo></a>
 </p>
 <p>
 <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=VhD0AZSmzvsD3fu7CeQFkzpBQHMHANb1&authKey=W7JGJ0HKklyhP1jyBvbTF2Dkw0cq4UmhVSx2zXVdIm6n48Xrto%2B7%2B1n9jbkAadyF&noverify=0&group_code=649574038"><img src=https://img.shields.io/badge/flutter%E4%BA%A4%E6%B5%81%E7%BE%A4-649574038-blue></a>

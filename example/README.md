@@ -1,6 +1,6 @@
-# gtads_huawei_example
+# gtads_vivo_example
 
-Demonstrates how to use the gtads_huawei plugin.
+Demonstrates how to use the gtads_vivo plugin.
 
 ## Getting Started
 
