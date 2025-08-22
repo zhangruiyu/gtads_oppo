@@ -1,8 +1,8 @@
 # GTAds华为vivo支持插件
 <p>
-<a href="https://pub.flutter-io.cn/packages/gtads_vivo"><img src=https://img.shields.io/pub/v/gtads_vivo?color=orange></a>
-<a href="https://pub.flutter-io.cn/packages/gtads_vivo"><img src=https://img.shields.io/pub/likes/gtads_vivo></a>
-<a href="https://pub.flutter-io.cn/packages/gtads_vivo"><img src=https://img.shields.io/pub/points/gtads_vivo></a>
+<a href="https://pub.flutter-io.cn/packages/gtads_oppo"><img src=https://img.shields.io/pub/v/gtads_oppo?color=orange></a>
+<a href="https://pub.flutter-io.cn/packages/gtads_oppo"><img src=https://img.shields.io/pub/likes/gtads_oppo></a>
+<a href="https://pub.flutter-io.cn/packages/gtads_oppo"><img src=https://img.shields.io/pub/points/gtads_oppo></a>
 </p>
 <p>
 <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=VhD0AZSmzvsD3fu7CeQFkzpBQHMHANb1&authKey=W7JGJ0HKklyhP1jyBvbTF2Dkw0cq4UmhVSx2zXVdIm6n48Xrto%2B7%2B1n9jbkAadyF&noverify=0&group_code=649574038"><img src=https://img.shields.io/badge/flutter%E4%BA%A4%E6%B5%81%E7%BE%A4-649574038-blue></a>
@@ -20,12 +20,12 @@
  //广告基础库 必须引入
  gtads: ^1.0.0
  //华为广告
- gtads_vivo[](): current version
+ gtads_oppo[](): current version
 ```
 
 ### 引入
 ```dart
-import 'package:gtads_vivo/gtads_vivo.dart';
+import 'package:gtads_oppo/gtads_oppo.dart';
 ```
 
 ### 使用

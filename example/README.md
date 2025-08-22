@@ -1,6 +1,6 @@
-# gtads_vivo_example
+# gtads_oppo_example
 
-Demonstrates how to use the gtads_vivo plugin.
+Demonstrates how to use the gtads_oppo plugin.
 
 ## Getting Started
 

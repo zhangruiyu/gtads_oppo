@@ -101,13 +101,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.5.0"
-  gtads_vivo:
+  gtads_oppo:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.0.0"
+    version: "1.0.1"
   integration_test:
     dependency: "direct dev"
     description: flutter

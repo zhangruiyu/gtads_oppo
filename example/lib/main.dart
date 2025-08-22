@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gtads/gtads.dart';
 import 'dart:async';
 
-import 'package:gtads_vivo/gtads_vivo.dart';
+import 'package:gtads_oppo/gtads_oppo.dart';
 
 
 void main() {

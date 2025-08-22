@@ -1,7 +1,7 @@
-name: gtads_vivo
+name: gtads_oppo
 description: "GTAds华为广告支持"
 version: 1.0.1
-homepage: https://github.com/zhangruiyu/gtads_vivo
+homepage: https://github.com/zhangruiyu/gtads_oppo
 
 environment:
   sdk: '>=2.19.6 <4.0.0'
@@ -36,5 +36,5 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.huazi.gtads_vivo
-        pluginClass: GtadsVivoPlugin
+        package: com.huazi.gtads_oppo
+        pluginClass: GtadsOppoPlugin
