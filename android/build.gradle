@@ -59,7 +59,10 @@ android {
         implementation "com.android.support:support-v4:28.0.0"
         implementation "com.android.support:recyclerview-v7:28.0.0"
         implementation "com.android.support:appcompat-v7:28.0.0"
+        compileOnly(name: 'mobad_normal_pub_772000_2025_03_14', ext: 'aar')
         compileOnly(name: 'oaid_sdk_1.0.25', ext: 'aar')
+        compileOnly(name: 'universal-image-loader-1.9.5', ext: 'jar')
+        compileOnly(name: 'android-query-full.0.26.7', ext: 'jar')
     }
 
     testOptions {

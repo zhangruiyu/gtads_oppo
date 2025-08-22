@@ -33,7 +33,7 @@ class _IndexState extends State<Index> {
   }
 
   Future<void> init() async {
-    GTAds.addProvider(GTAdsVivoProvider("vivo",'959aaeba68264d51bb5e06dd4c080d7c'));
+    GTAds.addProvider(GTAdsOppoProvider("oppo",'959aaeba68264d51bb5e06dd4c080d7c'));
     initAd = await GTAds.init(isDebug: true);
     setState(() {});
   }
@@ -72,7 +72,7 @@ class _IndexState extends State<Index> {
                     var b = await GTAds.rewardAd(
                       codes: [
                         GTAdsCode(
-                          alias: "vivo",
+                          alias: "oppo",
                           probability: 5,
                           androidId: "a62bd1226c7749b196b6a3375edb19b8",
                         )
@@ -117,7 +117,7 @@ class _IndexState extends State<Index> {
                     var b = await GTAds.insertAd(
                         codes: [
                           GTAdsCode(
-                            alias: "vivo",
+                            alias: "oppo",
                             probability: 5,
                             androidId: "3cc5030925194114a21156524812d7a9",
                           )

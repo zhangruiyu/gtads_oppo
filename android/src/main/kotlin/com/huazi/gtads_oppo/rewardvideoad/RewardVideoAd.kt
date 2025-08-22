@@ -2,10 +2,9 @@ package com.huazi.gtads_oppo.rewardvideoad
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import com.vivo.mobilead.unified.base.AdParams
-import com.vivo.mobilead.unified.base.VivoAdError
-import com.vivo.mobilead.unified.reward.UnifiedVivoRewardVideoAd
-import com.vivo.mobilead.unified.reward.UnifiedVivoRewardVideoAdListener
+import android.content.DialogInterface
+import com.heytap.msp.mobad.api.ad.RewardVideoAd
+import com.heytap.msp.mobad.api.listener.IRewardVideoAdListener
 import com.huazi.gtads_oppo.FlutterHuaweiAdEventPlugin
 import com.huazi.gtads_oppo.LogUtil
 
@@ -15,7 +14,7 @@ object RewardVideoAd {
     private val TAG = "RewardVideoAd"
 
     private lateinit var context: Activity
-    private var vivoRewardVideoAd: UnifiedVivoRewardVideoAd? = null
+    private var vivoRewardVideoAd: RewardVideoAd? = null
 
     private var codeId: String? = null
     private var userID: String = ""
@@ -25,7 +24,6 @@ object RewardVideoAd {
 
 
     fun init(context: Activity, params: Map<*, *>) {
-        RewardVideoAd.context = context
         codeId = params["androidId"] as String
         userID = params["userID"] as String
         rewardName = params["rewardName"] as String
@@ -35,10 +33,11 @@ object RewardVideoAd {
     }
 
     private fun loadRewardVideoAd() {
-        val builder = AdParams.Builder(codeId!!)
-        // Vivo SDK doesn't have a direct way to set user ID and custom data
-        // We'll use the reward name and amount in the onRewardVerify callback
-        vivoRewardVideoAd = UnifiedVivoRewardVideoAd(context, builder.build(), rewardVideoAdListener)
+        vivoRewardVideoAd = RewardVideoAd(
+            context,
+            codeId!!,
+            rewardVideoAdListener
+        )
         vivoRewardVideoAd?.loadAd()
     }
 
@@ -49,43 +48,59 @@ object RewardVideoAd {
             FlutterHuaweiAdEventPlugin.sendContent(map)
             return
         }
-        vivoRewardVideoAd?.showAd(context)
+        vivoRewardVideoAd?.showAd()
     }
 
-    private var rewardVideoAdListener = object : UnifiedVivoRewardVideoAdListener {
-        override fun onAdReady() {
+    private var rewardVideoAdListener = object : IRewardVideoAdListener {
+        override fun onAdSuccess() {
             LogUtil.e("$TAG  激励广告视频素材缓存成功")
             var map: MutableMap<String, Any?> =
                 mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onReady")
             FlutterHuaweiAdEventPlugin.sendContent(map)
         }
 
-        override fun onAdFailed(error: VivoAdError) {
-            LogUtil.e("$TAG  广告流程出错 ${error.code}")
+        override fun onAdFailed(code:Int,error: String) {
+            LogUtil.e("$TAG  广告流程出错 ${code} ${error}")
             var map: MutableMap<String, Any?> = mutableMapOf(
                 "adType" to "rewardAd",
                 "onAdMethod" to "onFail",
-                "code" to error.code,
-                "message" to error.msg
+                "code" to code,
+                "message" to error
             )
             FlutterHuaweiAdEventPlugin.sendContent(map)
         }
 
-        override fun onAdClick() {
+        override fun onVideoPlayError(p0: String?) {
+
+        }
+
+        override fun onVideoPlayClose(p0: Long) {
+
+        }
+
+        override fun onLandingPageOpen() {
+
+        }
+
+        override fun onLandingPageClose() {
+
+        }
+
+        override fun onAdClick(p0: Long) {
             LogUtil.e("$TAG  激励视频广告被点击")
             var map: MutableMap<String, Any?> =
                 mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onClick")
             FlutterHuaweiAdEventPlugin.sendContent(map)
         }
 
-        override fun onAdShow() {
+        override fun onVideoPlayStart() {
             LogUtil.e("$TAG  激励视频广告页面展示")
             var map: MutableMap<String, Any?> =
                 mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onShow")
             FlutterHuaweiAdEventPlugin.sendContent(map)
         }
 
-        override fun onAdClose() {
+        override fun onVideoPlayComplete() {
             LogUtil.e("$TAG  激励视频广告被关闭")
             var map: MutableMap<String, Any?> =
                 mutableMapOf("adType" to "rewardAd", "onAdMethod" to "onClose")
@@ -93,7 +108,7 @@ object RewardVideoAd {
             vivoRewardVideoAd = null
         }
 
-        override fun onRewardVerify() {
+        override fun onReward(vararg objects: Any?) {
             LogUtil.e("$TAG  激励视频广告激励发放")
             var map: MutableMap<String, Any?> = mutableMapOf(
                 "adType" to "rewardAd",
@@ -102,6 +117,10 @@ object RewardVideoAd {
                 "rewardAmount" to rewardAmount
             )
             FlutterHuaweiAdEventPlugin.sendContent(map)
+        }
+
+        override fun onAdFailed(p0: String?) {
+            ///废弃方法
         }
     }
 }

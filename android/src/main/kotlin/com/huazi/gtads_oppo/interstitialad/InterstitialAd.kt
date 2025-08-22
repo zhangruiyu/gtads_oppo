@@ -2,11 +2,9 @@ package com.huazi.gtads_oppo.interstitialad
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import com.vivo.mobilead.unified.base.AdParams
-import com.vivo.mobilead.unified.base.VivoAdError
-import com.vivo.mobilead.unified.interstitial.UnifiedVivoInterstitialAd
-import com.vivo.mobilead.unified.interstitial.UnifiedVivoInterstitialAdListener
 import com.huazi.gtads_oppo.FlutterHuaweiAdEventPlugin
+import com.heytap.msp.mobad.api.ad.InterstitialAd
+import com.heytap.msp.mobad.api.listener.IInterstitialAdListener
 import com.huazi.gtads_oppo.LogUtil
 
 @SuppressLint("StaticFieldLeak")
@@ -14,7 +12,7 @@ object InterstitialAd {
     private val TAG = "InterstitialAd"
 
     private lateinit var context: Activity
-    private var vivoInterstitialAd: UnifiedVivoInterstitialAd? = null
+    private var vivoInterstitialAd: InterstitialAd? = null
 
     private var codeId: String? = null
 
@@ -26,8 +24,9 @@ object InterstitialAd {
     }
 
     private fun loadInterstitialAD() {
-        val adParams = AdParams.Builder(codeId!!).build()
-        vivoInterstitialAd = UnifiedVivoInterstitialAd(context, adParams, interstitialAdListener)
+        vivoInterstitialAd =
+            InterstitialAd(context, codeId)
+        vivoInterstitialAd?.setAdListener(interstitialAdListener)
         vivoInterstitialAd?.loadAd()
     }
 
@@ -42,7 +41,7 @@ object InterstitialAd {
         vivoInterstitialAd?.showAd()
     }
 
-    private var interstitialAdListener = object : UnifiedVivoInterstitialAdListener {
+    private var interstitialAdListener = object : IInterstitialAdListener {
         override fun onAdReady() {
             LogUtil.e("$TAG  插屏全屏视频视频广告，渲染成功")
             var map: MutableMap<String, Any?> =
@@ -50,17 +49,24 @@ object InterstitialAd {
             FlutterHuaweiAdEventPlugin.sendContent(map)
         }
 
-        override fun onAdFailed(error: VivoAdError) {
-            LogUtil.e("$TAG  插屏全屏视频视频广告，渲染失败 errorCode: ${error.code}")
+
+        override fun onAdFailed(code: Int, error: String?) {
+            LogUtil.e("$TAG  插屏全屏视频视频广告，渲染失败 errorCode: ${error} ${code}")
             var map: MutableMap<String, Any?> = mutableMapOf(
                 "adType" to "interactAd",
                 "onAdMethod" to "onFail",
-                "code" to error.code,
-                "message" to error.msg
+                "code" to code,
+                "message" to error
             )
             FlutterHuaweiAdEventPlugin.sendContent(map)
             vivoInterstitialAd = null
         }
+
+
+        override fun onAdFailed(p0: String?) {
+            ///废弃了
+        }
+
 
         override fun onAdClick() {
             LogUtil.e("$TAG  插屏全屏视频广告点击时回调")

@@ -3,12 +3,10 @@ package com.huazi.gtads_oppo
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import com.heytap.msp.mobad.api.InitParams
+import com.heytap.msp.mobad.api.MobAdManager
 import com.huazi.gtads_oppo.interstitialad.InterstitialAd
 import com.huazi.gtads_oppo.rewardvideoad.RewardVideoAd
-import com.vivo.mobilead.manager.VInitCallback
-import com.vivo.mobilead.manager.VivoAdManager
-import com.vivo.mobilead.model.VAdConfig
-import com.vivo.mobilead.unified.base.VivoAdError
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -66,31 +64,15 @@ class GtadsOppoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "init" -> {
                 val debug = call.argument<Boolean>("debug")!!
                 val mediaId = call.argument<String>("mediaId")!!
-                val adConfig = VAdConfig.Builder()
-                    .setMediaId(
-                        mediaId
-                    )
-                    .setDebug(debug).build()
-                VivoAdManager.getInstance().setAgreePrivacyStrategy(true)
+                val initParams: InitParams = InitParams.Builder()
+                    .setDebug(debug) //true打开SDK日志，当应用发布Release版本时，必须注释掉这行代码的调用，或者设为false
+                    .build()
 
                 /**
-                 * 开发者需要在用户同意APP的隐私政策之后调用以下代码来初始化Vivo广告联盟SDK
+                 * 调用这行代码初始化广告SDK
                  */
-                VivoAdManager.getInstance().init(mApplication, adConfig, object : VInitCallback {
-                    override fun suceess() {
-                        result.success(true)
-                    }
-
-                    override fun failed(adError: VivoAdError) {
-                        result.success(false)
-                    }
-                })
-//                val debug = call.argument<Boolean>("debug")
-//                // Initialize Vivo SDK
-//                VivoAdConfig.init(applicationContext!!)
-//                LogUtil.setAppName("flutter_vivoad")
-//                LogUtil.setShow(debug!!)
-//                result.success(true)
+                MobAdManager.getInstance().init(applicationContext, mediaId, initParams)
+                result.success(true)
             }
 
             "loadInterstitialAD" -> {
