@@ -24,6 +24,7 @@ object RewardVideoAd {
 
 
     fun init(context: Activity, params: Map<*, *>) {
+        this.context = context
         codeId = params["androidId"] as String
         userID = params["userID"] as String
         rewardName = params["rewardName"] as String
